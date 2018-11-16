@@ -2,7 +2,8 @@ const express = require('express'),
         app = express(),
         server = require('http').Server(app),
         io = require('socket.io')(server),
-        bodyParser = require('body-parser')
+        bodyParser = require('body-parser'),
+        data = require('./public/js/objects')
 
 server.listen(80, () => {
         console.log('Server is running...')
@@ -40,3 +41,5 @@ io.on('connection', (socket) => {
 io.on('send-message', (socket, msg) => {
         socket.broadcast.emit('broadcast-message', msg)
 })
+
+console.log(new User('John'))
