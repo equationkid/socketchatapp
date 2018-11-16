@@ -1,8 +1,8 @@
 const express = require('express'),
         app = express(),
-        io = require('socket.io'),
-        bodyParser = require('body-parser'),
-        server = require('http').Server(app)
+        server = require('http').Server(app),
+        io = require('socket.io')(server),
+        bodyParser = require('body-parser')
 
 server.listen(80, () => {
         console.log('Server is running...')
@@ -28,4 +28,6 @@ app.get('/rooms', (req, res) => {
 })
 
 // TODO: app.post
-// TODO: io
+io.on('connection', () => {
+        console.log('Someone connected')
+})
