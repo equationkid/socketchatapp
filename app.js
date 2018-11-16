@@ -20,8 +20,12 @@ app.get('/', (req, res) => {
 app.get('/newroom', (req, res) => {
         res.render('newroom')
 })
+app.post('/newroom', (req, res) => {
+        res.render('/newroom')
+})
 app.get('/rooms', (req, res) => {
         res.render('rooms')
 })
+
 // TODO: app.post
 // TODO: io
