@@ -31,7 +31,12 @@ app.get('/chat', (req, res) => {
         res.render('chat')
 })
 
-// TODO: app.post
-io.on('connection', () => {
-        console.log('Someone connected')
+io.on('connection', (socket) => {
+        socket.on('disconnect', () => {
+                socket.broadcast.emit('status-disconnect')
+        })
+})
+
+io.on('send-message', (socket, msg) => {
+        socket.broadcast.emit('broadcast-message', msg)
 })
